@@ -1,0 +1,525 @@
+/* All the code on this page was made by Remy A. Olsen*/
+
+/* Variables */
+:root {
+    /* Location and amount for the stack of cards */
+    --card-stack-left: 450px;
+    --card-stack-top: 500px;
+    --card-amount: 8;
+}
+
+/* Main container with the background */
+#container {
+    display: flex;
+
+    background-image: url(../images/blackjack-dealer.png);
+    background-size: cover;
+    background-position: left;
+
+    font-family: sans-serif;
+    font-size: 1.05rem;
+    font-style: normal;
+}
+
+#chat-box {
+    display:flex;
+    flex-direction:column;
+    position: absolute;
+
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    width: 400px;
+    height: 100px;
+    padding: 5px;
+
+    top: 100px;
+    left: 100px;
+    
+    background: rgba(230,230,230,0.8);
+    border: 2px solid rgba(240,240,240,1);
+    border-radius: 5px;
+
+}
+
+#cash-container {
+    left: 20px;
+    top: 670px;
+}
+
+#deal-cards-checkbox:checked ~ #cash-container #cash-50k {
+    display: none;
+}
+#deal-cards-checkbox:checked ~ #cash-container #cash-0 {
+    display: block;
+}
+
+/* Styles the reply choice buttons */
+.chat-buttons {
+    display:flex;   
+    position: relative;
+    font-size: 0.75rem;
+    cursor: pointer;
+
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+    width: 120px;
+    height: 30px;
+    
+    left: 140px;
+    top: 210px;
+    margin: 10px;
+    padding: 10px;
+
+    background: rgba(230,230,230,0.9);
+    border: 2px solid rgba(240,240,240,1);
+    border-radius: 5px;
+}
+
+a, a:visited {
+    color: inherit;
+    text-decoration: none;
+}
+
+/*
+    This is based on the "ultimate multiple choices checkbox hack" further down that handles multiple choice boxes,
+    this changes the content in the chatbox depending on the checkbox you click.
+*/
+/* Hides the text content that shouldn't be displayed at the start*/
+#line-deal-hearts,
+#line-deal-diamonds,
+#line-deal-clubs,
+#line-hitorstay,
+#line-bust,
+#line-stay {
+    display:none;
+    opacity: 0;
+}
+/* Hides the first line */
+#deal-cards-checkbox:checked ~ #chat-box #line-play {
+    display:none;
+}
+/* Shows the lines synced when he deal cards */
+#deal-cards-checkbox:checked ~ #chat-box #line-deal-hearts {
+    display:block;
+    animation: text-visible 1s linear 1s 1 forwards;
+}
+#deal-cards-checkbox:checked ~ #chat-box #line-deal-diamonds {
+    display:block;
+    animation: text-visible 1s linear 2s 1 forwards;
+}
+#deal-cards-checkbox:checked ~ #chat-box #line-deal-clubs {
+    display:block;
+    animation: text-visible 1s linear 3s 1 forwards;
+}
+#deal-cards-checkbox:checked ~ #chat-box #line-hitorstay {
+    display:block;
+    animation: text-visible 1s linear 4s 1 forwards;
+}
+
+/* Hides the previous lines if you hit or stay */
+#hit-me-checkbox:checked ~ #chat-box #line-deal-hearts,
+#hit-me-checkbox:checked ~ #chat-box #line-deal-diamonds,
+#hit-me-checkbox:checked ~ #chat-box #line-deal-clubs,
+#hit-me-checkbox:checked ~ #chat-box #line-hitorstay,
+#stay-checkbox:checked ~ #chat-box #line-deal-hearts,
+#stay-checkbox:checked ~ #chat-box #line-deal-diamonds,
+#stay-checkbox:checked ~ #chat-box #line-deal-clubs,
+#stay-checkbox:checked ~ #chat-box #line-hitorstay {
+    display:none;
+}
+
+/* Shows the third line if you hit */
+#hit-me-checkbox:checked ~ #chat-box #line-bust {
+    display:block;
+    animation: text-visible 1s linear 1s 1 forwards;
+}
+/* Shows the fourth line if you stay */
+#stay-checkbox:checked ~ #chat-box #line-stay {
+    display: block;
+    animation: text-visible 1s linear 1s 1 forwards;
+}
+
+@keyframes text-visible {
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Blackjack-cards common values */
+.bj-cards {
+    display: flex;
+    position: absolute;
+
+    left: var(--card-stack-left);
+    top: var(--card-stack-top);
+    transform: translate(-50%,-50%);
+
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,1);
+
+    max-width: 70px;
+    z-index:0;
+}
+
+/*  # Individual cards
+    # I made a variable to easily change the z-index of the cards,
+    # so I don't have to change the z-index of the previous cards when I add new ones */
+#card1 {
+    left: calc(var(--card-stack-left) + 14px);
+    top: calc(var(--card-stack-top) - 9px);
+    z-index: calc(var(--card-amount));
+} 
+#card2 {
+    left: calc(var(--card-stack-left) + 12px);
+    top: calc(var(--card-stack-top) - 8px);
+    z-index: calc(var(--card-amount) - 1);
+}
+#card3 {
+    left: calc(var(--card-stack-left) + 10px);
+    top: calc(var(--card-stack-top) - 7px);
+    z-index: calc(var(--card-amount) - 2);
+}
+#card4 {
+    left: calc(var(--card-stack-left) + 8px);
+    top: calc(var(--card-stack-top) - 6px);
+    z-index: calc(var(--card-amount) - 3);
+}
+#card5 {
+    left: calc(var(--card-stack-left) + 6px);
+    top: calc(var(--card-stack-top) - 5px);
+    z-index: calc(var(--card-amount) - 4);
+}
+#card6 {
+    left: calc(var(--card-stack-left) + 4px);
+    top: calc(var(--card-stack-top) - 4px);
+    z-index: calc(var(--card-amount) - 5);
+}
+#card7 {
+    left: calc(var(--card-stack-left) + 3px);
+    top: calc(var(--card-stack-top) - 3px);
+    z-index: calc(var(--card-amount) - 6);
+}
+#card8 {
+    left: calc(var(--card-stack-left) + 2px);
+    top: calc(var(--card-stack-top) - 2px);
+    z-index: calc(var(--card-amount) - 7);
+}
+
+/* THE ULTIMATE MULTIPLE CHOICE CHECKBOX HACK */
+/*  By Remy A. Olsen
+
+    -- To add more choices you need to --
+    #1: Hide the box you want to appear
+    #2: Hide the button you click on when it's checked
+    #2.1: Hide the button you clicked (Multiple choice)
+    #2.2: Hides the button you didn't click (multiple choice only)
+    #3: Make the next button(s) visible
+
+*/
+
+/* Hides the checkbox icons */
+.hide-checkbox {
+    display:none;
+    
+}
+
+/*  
+    #1: Hides the chatboxes you don't want visible from start.*/
+#hit-me-checkbox + .chat-buttons,
+#stay-checkbox + .chat-buttons,
+#leave-checkbox +.chat-buttons {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+/* 
+    #2: Hide checkbox you click when it's checked
+    # When first "deal-cards" checkbox/chatbox has been clicked it hides it */
+#deal-cards-checkbox:checked + .chat-buttons {
+    display:none;
+}
+
+/* 
+    #3: Make the next button(s) visible
+    # When the first "deal-cards" checkbox/chatbox has been clicked, makes the next ones visible, in this case "hit-me" and "stay" */
+#deal-cards-checkbox:checked ~ #hit-me-checkbox + .chat-buttons,
+#deal-cards-checkbox:checked ~ #stay-checkbox + .chat-buttons {
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 1s;
+    
+}
+
+/*
+    #2.1 Hide the checkbox you click (multiple choice) */
+#deal-cards-checkbox ~ #hit-me-checkbox:checked + .chat-buttons, /* Hides the "hit" box */
+#deal-cards-checkbox ~ #stay-checkbox:checked + .chat-buttons { /* Hides the "stay" box */
+    display:none;
+}
+
+/* 
+    #2.2 Hides the checkbox/chatbox you didn't click (multiple choice only)
+    # I use the has() selector here to check if any of the labels with the class ".chat-buttons" has a sibling that is "#stay-checkbox" and if it's checked.
+    # This is how you can "select" a previous sibling, as it's otherwise not possible to hide the "hit-me" box from the position of the "stay" box in HTML. */ 
+#deal-cards-checkbox ~ #hit-me-checkbox:checked ~ #stay-checkbox + .chat-buttons, /* Hides the "stay" box */
+#deal-cards-checkbox ~ .chat-buttons:has(~ #stay-checkbox:checked) { /* Hides the "hit" box (and possibly all boxes before it that has "#stay-checkbox" as their sibling */
+    display:none;
+}
+
+/*
+    #3 Makes the next button visible after one of the second has been clicked*/
+#hit-me-checkbox:checked ~ #leave-checkbox + .chat-buttons,
+#stay-checkbox:checked ~ #leave-checkbox + .chat-buttons {
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 1s;
+}
+
+
+/* Deals card1 to player, once the first "deal-cards" checkbox/chatbox has been clicked */
+#deal-cards-checkbox:checked ~ #card-deck #card1 {
+    animation:  card1-deal 1s 0s forwards,
+                card-flip-7ofhearts 1s 1s forwards;
+}
+
+/* card1 to player */
+@keyframes card1-deal {
+    0% {
+        z-index: calc(var(--card-amount));
+    }
+    50% {
+        top: calc(var(--card-stack-top) + 50px);
+        left: var(--card-stack-left);
+    }
+    99% {
+        z-index: calc(var(--card-amount));
+    }
+    100% {
+        /* z-index: var(--card-amount); */
+        top: calc(var(--card-stack-top) + 180px);
+        left: calc(var(--card-stack-left) + 250px);
+        transform: translate(-50%,-50%) rotate(5deg);
+        z-index: 1;
+    }
+}
+
+/* Animation that makes the card flip and turn into 7 of hearts, the image files are mirrored because rotateY(180) mirrors the pictures back*/
+@keyframes card-flip-7ofhearts {
+    100% {
+        transform: translate(-50%,-50%) rotateY(180deg);
+        content:url(../images/face-7ofhearts.png);
+    }
+}
+
+/* Deals card2 "upcard" to dealer, once the first "deal-cards" chatbox/checkbox has been clicked */
+#deal-cards-checkbox:checked ~ #card-deck #card2 {
+    animation:  card2-deal 1s 1s forwards,
+                card-flip-9ofdiamonds 1s 2s forwards;
+
+}
+
+/* card2 the "upcard" to the dealer*/
+@keyframes card2-deal {
+    0% {
+        z-index: calc(var(--card-amount) - 1);
+    }
+    50% {
+        top: calc(var(--card-stack-top) + 50px);
+        left: var(--card-stack-left);
+    }
+    99% {
+        z-index: calc(var(--card-amount) - 1);
+    }
+    100% {  
+        top: calc(var(--card-stack-top) + 10px);
+        left: calc(var(--card-stack-left) + 250px);
+        transform: translate(-50%,-50%) rotate(5deg);
+        z-index: 2;
+    }
+}
+
+@keyframes card-flip-9ofdiamonds {
+    100% {
+        transform: translate(-50%,-50%) rotateY(180deg);
+        content:url(../images/face-9ofdiamonds.png);
+        z-index: 2;
+    }
+}
+
+/* Deals card3 to player */
+#deal-cards-checkbox:checked ~ #card-deck #card3 {
+    animation:  card3-deal 1s 2s forwards,
+                card-flip-7ofclubs 1s 3s forwards, card3-slide-right 1s 4s forwards;
+
+}
+
+@keyframes card3-deal {
+    0% {
+        z-index: calc(var(--card-amount) - 2);
+    }
+    50% {
+        top: calc(var(--card-stack-top) + 50px);
+        left: var(--card-stack-left);
+        z-index: calc(var(--card-amount) - 2);
+
+    }
+    100% {
+        top: calc(var(--card-stack-top) + 180px);
+        left: calc(var(--card-stack-left) + 270px);
+        transform: translate(-50%,-50%) rotate(5deg);
+        z-index: 1;
+    }
+}
+
+@keyframes card-flip-7ofclubs {
+    100% {
+        transform: translate(-50%,-50%) rotateY(180deg);
+        content:url(../images/face-7ofclubs.png);
+        z-index: 1;
+    }
+}
+
+@keyframes card3-slide-right {
+    100% {
+        left: calc(var(--card-stack-left) + 330px);
+        z-index: 1;
+    }
+}
+
+/* Deals card4 "hole card" to the dealer */
+#deal-cards-checkbox:checked ~ #card-deck #card4 {
+    animation:  card4-deal 1s 3s forwards,
+                card4-slide-left 1s 4s forwards;
+
+}
+
+/* card4 "hole card" to dealer */
+@keyframes card4-deal {
+    0% {
+        z-index: calc(var(--card-amount) - 3);
+    }
+    50% {
+        top: calc(var(--card-stack-top) + 150px);
+        left: var(--card-stack-left);
+    }
+    99% {
+        z-index: calc(var(--card-amount) - 3);
+    }
+    100% {  
+        top: calc(var(--card-stack-top) + 10px);
+        left: calc(var(--card-stack-left) + 350px);
+        transform: translate(-50%,-50%) rotate(5deg);
+        z-index: 1;
+
+    }
+}
+
+@keyframes card4-slide-left {
+    100% {
+        z-index: 1;
+        left: calc(var(--card-stack-left) + 300px)
+    }
+}
+
+/* Deals card5 to the player if they hit, the player will bust */
+#hit-me-checkbox:checked ~ #card-deck #card5 {
+    animation:  card5-hit 1s ease-in-out 0s forwards,
+                card-flip-kingofdiamonds 1s ease-in-out 1s forwards;
+
+}
+
+@keyframes card5-hit {
+    0% {
+        z-index: calc(var(--card-amount) - 4);
+    }
+    50% {
+        left: calc(var(--card-stack-left) + 500px);
+    }
+    99% {
+        z-index: calc(var(--card-amount) - 4);
+    }
+    100% {
+        top: calc(var(--card-stack-top) + 180px);
+        left: calc(var(--card-stack-left) + 170px);
+        transform: translate(-50%,-50%) rotate(10deg);
+        z-index: 1;
+    }
+}
+
+/* When you STAY: Deals card5 to the dealer if they stand, dealer will win */
+#stay-checkbox:checked ~ #card-deck #card5 {
+    animation:  card5-stand 1s 1s forwards,
+                card-flip-kingofdiamonds 1s 2s forwards;
+
+}
+
+/* card5 to dealer, if the player choose to stand */
+@keyframes card5-stand {
+    0% {
+        z-index: calc(var(--card-amount) - 4);
+    }
+    50% {
+        top: calc(var(--card-stack-top) + 50px);
+        left: var(--card-stack-left);
+    }
+    99% {
+        z-index: calc(var(--card-amount) - 4);
+    }
+    100% {  
+        top: calc(var(--card-stack-top) + 10px);
+        left: calc(var(--card-stack-left) + 200px);
+        transform: translate(-50%,-50%) rotate(5deg);
+        z-index: 2;
+    }
+}
+
+@keyframes card-flip-kingofdiamonds {
+    100% {
+        transform: translate(-50%,-50%) rotateY(180deg);
+        content:url(../images/face-kingofdiamonds.png);
+    }
+}
+
+/* When you STAY: Reveals the face of dealers "hole card" card4 */
+#stay-checkbox:checked ~ #card-deck #card4 {
+    animation:  card4-reveal-right 1s 0s forwards,
+                card4-reveal-2ofspades 1s 1s forwards;
+
+}
+
+@keyframes card4-reveal-right {
+    0% {
+        left: calc(var(--card-stack-left) + 300px);
+        transform: translate(-50%,-50%) rotate(5deg);
+        top: calc(var(--card-stack-top) + 10px);
+        z-index: 1;
+    }
+    100% {
+        z-index: 1;
+        transform: translate(-50%,-50%) rotate(5deg);
+        top: calc(var(--card-stack-top) + 10px);
+        left: calc(var(--card-stack-left) + 350px)
+    }
+}
+
+/* reveals the hole card */
+@keyframes card4-reveal-2ofspades {
+    0% {
+        top: calc(var(--card-stack-top) + 10px);
+        left: calc(var(--card-stack-left) + 350px);
+        transform: translate(-50%,-50%) rotate(5deg);
+        z-index: 1;
+    }
+    100% {
+        top: calc(var(--card-stack-top) + 10px);
+        left: calc(var(--card-stack-left) + 300px);
+        transform: translate(-50%,-50%) rotateY(180deg);
+        content:url(../images/face-2ofspades.png);
+        z-index: 1;
+    }
+}

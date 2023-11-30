@@ -1,0 +1,97 @@
+/*
+    Link to main_style first in your html documents
+    Editing here will change the container for everyone, be careful.
+*/
+body {
+    padding: 0;
+    margin: 0;
+
+    background-color: rgba(20,20,20,1);
+}
+
+#container {
+    display: block;
+    background: rgba(245,245,245,1);
+    background-image: url(../images/map.png);
+
+    background-position: left;
+    background-repeat: no-repeat;
+
+    font-family: sans-serif;
+
+    max-width: 1366px;
+    min-width: 1366px;
+    max-height: 768px;
+    min-height: 768px;
+
+    overflow: hidden;
+}
+
+.chat-box {
+    position: absolute;
+    background-color: rgba(230, 230, 230, 0.5);
+    height: 150px;
+    width: 450px;
+    border: solid rgba(200, 200, 200, 0.75) 2px;
+    margin: 0%;
+    padding: 0%;
+    z-index: 3;
+}
+
+/*
+    Cash container that shows how much cash they have
+    Put it in your bottom left corner in your websites with:
+
+    #cash-container {
+        left: 20px;
+        top: 670px;
+    }
+*/
+#cash-container {
+    display: flex;
+    position: fixed;
+
+    font-family: sans-serif;
+    font-size: 1.05rem;
+
+    left: 835px;
+    top: 670px;
+    width: 160px;
+    padding:2px 10px 2px 10px;
+
+    justify-content: space-between;
+    align-items: center;
+
+    border: solid 1px rgba(230,230,230,1);
+    border-radius: 10px;
+    background: rgb(0,0,0,0.5);
+    color: rgba(255,255,255,1);
+    z-index: 3;
+}
+
+#cash-container img {
+    height: auto;
+    width: 50px;
+}
+
+/*
+    # Total cash, if you want to change it real time with CSS you have to add <p> tags with ID's
+    # then use a checkbox to hide or show it
+
+*/
+/* Hides 0 cash */
+#cash-0 {
+    display:none;
+}
+
+
+/*  checkbox hack example to show/hide different cash values */
+
+/*
+    #checkbox-id:checked ~ #cash-container #cash-50k {
+        display: none;
+    }
+    #checkbox-id:checked ~ #cash-container #cash-0 {
+        display: block;
+    }
+*/

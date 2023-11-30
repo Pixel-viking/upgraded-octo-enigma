@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Las Vegas: Blackjack</title>
+
+    <link rel="stylesheet" href="css/main_syle.css">
+    <link rel="stylesheet" href="css/blackjack.css">
+</head>
+<body>
+    <!-- Container -->
+    <div id="container">
+
+        <!-- Checkbox hack -->
+
+        <!-- First Checkbox -->
+        <input type="checkbox" id="deal-cards-checkbox" class="hide-checkbox">
+        <label for="deal-cards-checkbox" class="chat-buttons">Yes! I'm all in, baby!</label>
+
+        <!-- Second checkbox, visible after first is clicked -->
+        <input type="checkbox" id="hit-me-checkbox" class="hide-checkbox">
+        <label for="hit-me-checkbox" class="chat-buttons">Lucky number 7! Hit me, baby!</label>
+
+        <!-- Third checkbox, visible after first is clicked -->
+        <input type="checkbox" id="stay-checkbox" class="hide-checkbox">
+        <label for="stay-checkbox" class="chat-buttons">Hmm..<br>I think I want to stay.</label>
+
+        <!-- Fourth checkbox, visible after Third or Fourth is clicked -->
+        <input type="checkbox" id="leave-checkbox" class="hide-checkbox">
+        <label for="leave-checkbox" class="chat-buttons">
+            <a href="index.html">God damn it!<br>[Leave the Casino]
+            </a>
+        </label>
+        
+        
+        <!-- The deck of cards-->
+        <div id="card-deck">
+            <img src="images/card-back-hk.png" class="bj-cards" id="card1" alt="Seven of Hearts">
+            <img src="images/card-back-hk.png" class="bj-cards" id="card2" alt="Nine of Diamonds">
+            <img src="images/card-back-hk.png" class="bj-cards" id="card3" alt="Seven of Clubs"> 
+            <img src="images/card-back-hk.png" class="bj-cards" id="card4" alt="Two of Spades">
+            <img src="images/card-back-hk.png" class="bj-cards" id="card5" alt="King of Diamonds"> 
+            <img src="images/card-back-hk.png" class="bj-cards" id="card6" alt="Extra Card One">    
+            <img src="images/card-back-hk.png" class="bj-cards" id="card7" alt="Extra Card Two">    
+            <img src="images/card-back-hk.png" class="bj-cards" id="card8" alt="Extra Card Three">    
+        </div>
+
+        <!-- Chat content -->
+        <div id="chat-box">
+            <span id="line-play">You want to play? This is a high roller only table.<br> How much you betting?</span>
+            <span id="line-deal-hearts">Seven of Hearts</span>
+            <span id="line-deal-diamonds">Nine of Diamonds</span>
+            <span id="line-deal-clubs">Seven of Clubs</span>
+            <span id="line-hitorstay">You got 14, do you want to hit or stay?</span>
+            <span id="line-bust">King of diamonds<br>That's a bust, better luck next time.</span>
+            <span id="line-stay">King of Diamonds<br>21, Blackjack.<br>The house wins, better luck next time.</span>
+        </div>
+
+        <!-- Cash -->
+        <div id="cash-container">
+            <img src="images/cash.png" alt="cash">
+            <p>=</p>
+            <p id="cash-50k">50.000$</p>
+            <p id="cash-0">0$</p>
+        </div>
+    </div>
+
+    
+</body>
+</html>
