@@ -1,0 +1,314 @@
+
+#container {
+    background-image: url(../Animatedexamples/pawnshop3correct.png);
+    overflow: hidden;
+    
+}
+
+
+#employee_chumlee {
+    position: relative;
+    left: 200px;
+    top: 280px;
+    width: 230px;
+    transform: perspective(300px) rotate3D(0, 1, 0, 11deg);
+    border: solid 2px red;
+    animation: chumlee-introduces 3s ease-in-out 1s 1 forwards,
+               chumlee-moves-middle 3s ease-in-out 6s 1 forwards,
+               chumlee-initiates-trouble 3s ease-in-out 9s forwards,
+               chumlee-fall-down 1s ease-in-out 12s 1 forwards
+}
+
+
+
+/* Here Chumlee comes and introduces himself and initiates the conversation*/
+ @keyframes chumlee-introduces {
+    0% {
+        left: 200px;
+        top: 280px;
+    } 100% {
+        z-index: 1;
+        transform: scale(2);
+        top: 400px;
+        left: 500px;
+    }
+} 
+
+@keyframes chumlee-moves-middle {
+    0% {
+        z-index: 1;
+        transform: scale(2);
+    }
+    100% {
+        z-index: 1;
+        top: 200px;
+        left: 500px;
+        transform: scale(0.8);
+    }
+}
+
+@keyframes chumlee-initiates-trouble {
+    0% {
+        z-index: 1;
+        transform: scale(0.8);
+    }
+    100% {
+        z-index: 1;
+        top: 220px;
+        left: 640px;
+        transform: scale(0.8);
+    }
+}
+
+@keyframes chumlee-fall-down {
+    100% {
+        transform: rotateZ(-90deg) rotateY(180deg) scale(0.7) perspective(300px) rotate3D(0, 1, 0, -45deg);
+        left: 600px;
+        top: 300px;
+        
+    }
+}
+
+
+#employee_coreybighoss {
+    position: relative;
+    left: 300px;
+    top: 70px;
+    width: 80px;
+    border: solid 2px red;
+
+}
+
+/* Animations for Rick the big baldy smiley */
+#employee_rickbaldy {
+    position: relative;
+    left: 700px;
+    top: 350px;
+    width: 120px;
+    border: solid 2px red;
+}
+
+@keyframes rick-moves-in {
+    20% {
+        z-index: 1;
+        top: 300px;
+        left: 200px;
+        transform: scale(0.8) rotateY(180deg);
+    }
+    100% {
+        z-index: 1;
+        transform: scale(1.7) rotateY(180deg);
+        top: 390px;
+        left: 200px;
+    }
+
+}
+
+@keyframes rick-moves-down {
+
+}
+
+/* Animations for Richard The old stubborn*/
+#employee_richardold {
+    position: relative;
+    top: 180px;
+    left: 510px;
+    width: 100px;
+    border: solid 2px red;
+    animation: richard-old-move-down 1s ease-in-out 5s 1 forwards,
+                richard-old-move-back 1s ease-in-out 9s 1 forwards,
+                richard-old-flip-back 1s ease 10s forwards,
+                richard-old-headbuts 0.6s linear 11.8s 1 forwards;  
+} 
+
+@keyframes richard-old-move-down {
+    100% {
+        z-index: 1;
+        top: 300px;
+        left: 600px;
+        transform: scale(1.7) rotateY(180deg);
+    }
+}
+@keyframes richard-old-move-back {
+    0% {
+        z-index: 1;
+        top: 300px;
+        left: 600px;
+        transform: scale(1.7) rotateY(180deg);
+    }
+    100% {
+        z-index: 1;
+        top: 180px;
+        left: 510px;
+        transform: scale(1) rotateY(0deg);
+    }
+}
+@keyframes richard-old-flip-back {
+    100% {
+        transform: rotateY(180deg);
+    }
+}
+@keyframes richard-old-headbuts {
+    0% {
+        z-index: 1;
+        transform: rotateY(180deg);
+    }
+    50% {
+        transform: rotateZ(-45deg) rotateY(180deg);
+        z-index: 1;
+    }
+    100% {
+        z-index: 1;
+        transform: rotateZ(0deg) rotateY(180deg);
+    }
+}
+
+/* This is the animations in which proceedes after the STAY box is clicked */
+#pawnguys-checkbox:checked ~ #employee-container #employee_rickbaldy {
+    animation: rick-moves-in 5s ease-in-out 3s 1 forwards;
+}
+
+#pawnguys-checkbox:checked ~ .chat-box .chat-content.line-5 {
+    animation: text-appears 1s 1s 1 steps(60, end) forwards, fade-out 2s 2s 1 forwards;
+}
+
+#pawnguys-checkbox:checked ~ .chat-box .chat-content.line-6 {
+    animation: text-appears 1s 5s 1 steps(60, end) forwards, fade-out 7s 7s 1 forwards;
+}
+
+/* This makes sure the first pharagraphs is removed and a new layer is created */
+#pawnguys-checkbox:checked ~ .chat-box .first-par{
+    display: none;
+}
+
+/* This makes sure the secound pharagraphs is removed and a new layer is created */
+ /* #pawnguys-checkbox:checked ~ .chat-box .secound-par{
+    display: none;
+} */
+
+/* This code removes the button that's not clicked */
+#pawnguys-checkbox:checked ~ #pawnguys-leave + .chat-buttons,
+.chat-buttons:has(~ #pawnguys-leave:checked) {
+    display: none;
+}
+
+
+
+/* This makes sure the box dissapears after it's clicked */
+#pawnguys-checkbox:checked ~ #checkbox-stay,
+#pawnguys-leave:checked ~ #checkbox-leaves {
+    display: none;
+}
+
+
+#checkbox-user-answer {
+    display: none
+}
+
+/* This hides the checkbox from the site */
+#pawnguys-checkbox, #pawnguys-leave, #user-answer {
+    display: none;
+}
+
+
+/* borders for the chat box */
+.chat-box {
+    top: 600px;
+    left: 800px;
+    font-size: 15px;
+}
+
+/* here you can change the outlook of the chat content */
+.chat-content {
+    width: 0px;
+    white-space: nowrap;
+    max-width: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+/* The display of the checkbox button for the user */
+.chat-buttons {
+    width: 100px;
+    height: 50px;
+    top: 700px;
+    left: 1150px;
+    display: block;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: medium;
+    z-index: 5;
+    opacity: 0;
+    animation: delay-checkbox 0.5s 10s ease-in forwards;
+    background-color: rgba(230, 230, 230, 0.5);
+    border: solid rgba(200, 200, 200, 0.75) 2px;
+    margin: 0%;
+    padding: 0%;
+}
+
+#checkbox-leaves {
+    left: 1150px;
+    top: 700px;
+    
+}
+#checkbox-stay {
+    left: 800px;
+    top: 700px;
+}
+
+#checkbox-user-answer {
+    left: 1000px;
+    top: 700px;
+}
+
+/* The animation of the checkbox that should come to life after the intro */
+@keyframes delay-checkbox {
+    100% {
+        opacity: 1;
+    }
+}
+
+.chat-content.line-1 {
+    animation: text-appears 1s 1s 1 steps(60, end) forwards, fade-out 2s 6s 1 forwards;
+}
+
+.chat-content.line-2 {
+    animation: text-appears 1s 2s 1 steps(60, end) forwards, fade-out 2s 7s 1 forwards;
+}
+
+.chat-content.line-3 {
+    animation: text-appears 1s 3s 1 steps(60, end) forwards, fade-out 2s 8s 1 forwards;
+}
+
+.chat-content.line-4 {
+    animation: text-appears 1s 5.7s 1 steps(60, end) forwards, fade-out 2s 9s 1 forwards;
+} 
+
+
+@keyframes text-appears {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.next-sentence {
+    display: none;
+}
+
