@@ -1,0 +1,104 @@
+#container {
+   background-image: url(/images/airstrip.png);
+}
+
+.airplane {
+ width: 200px;
+ top: 500px;
+ left: 1500px;
+ position: relative;
+ animation: plane-move-left 2s ease-in 0s 1 forwards,
+            plane-lift-off 1s linear 2s 1 forwards,
+            plane-straighten 1s linear 3s 1 forwards;
+ transform: scaleX(-1);
+}
+
+
+@keyframes plane-move-left {
+50% {
+   transform: scaleX(-1) rotate(0deg);
+}
+90% {
+   transform: scaleX(-1) rotate(-10deg);
+}
+100% {
+   top: 500px;
+   left: 500px;
+   transform: scaleX(-1) rotate(-10deg);
+}
+}
+
+@keyframes plane-lift-off {
+0% {
+   top: 500px;
+   left: 500px;
+   transform: scaleX(-1) rotate(-10deg);
+}
+100% {
+   top: 200px;
+   left: 100px;
+   transform: scaleX(-1) rotate(-10deg);
+}
+}
+
+@keyframes plane-straighten {
+0% {
+   top: 200px;
+   left: 100px;
+   transform: scaleX(-1) rotate(-20deg);
+ }
+100% {
+   top: 100px;
+   left: -200px;
+   transform: scaleX(-1) rotate(0deg);
+ }
+}
+
+
+.cloud1 {
+ width: 150px;
+ position: relative;
+ top: 50px;
+ right: -1200px;
+ opacity: 0.8;
+ animation: cloud-move-right1 4s linear 0s 1 forwards;
+}
+
+@keyframes cloud-move-right1 {
+100% {
+   top: 50px;
+   right: 700px;
+}
+}
+
+.cloud2 {
+ width: 150px;
+ position: relative;
+ top: 50px;
+ right: -1200px;
+ opacity: 0.8;
+ animation: cloud-move-right2 3s linear 0s 1 forwards;
+}
+
+@keyframes cloud-move-right2 {
+100% {
+   top: 150px;
+   right: 700px;
+}
+}
+
+.cloud3 {
+width: 150px;
+position: relative;
+top: 50px;
+right: -1200px;
+opacity: 0.8;
+animation: cloud-move-right3 4s linear 0s 1 forwards;
+}
+
+@keyframes cloud-move-right3 {
+100% {
+    top: 150px;
+    right: 700px;
+}
+}
