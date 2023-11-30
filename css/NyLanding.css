@@ -1,15 +1,8 @@
-/* this is for background */
+
 #container {
    background-image: url(../images/airstrip.png);
   }
-
-  /*posistion for weclcome sign*/
-.welcome {
-   position: absolute;
-   
-}
   
-  /*This is the flight class it desides how big and where theh plane is loctatet on the site an it has the animations that plane will do */
   .airplane {
    width: 200px;
    top: 200px;
@@ -21,7 +14,6 @@
    
   }
   
-  /* keyfrmes for the plane-straighten animation */
   @keyframes plane-straighten {
    0% {
       top: 200px;
@@ -33,7 +25,6 @@
    }
   }
   
-  /* keyframes for plane-land animation */
   @keyframes plane-land { 
    0% {
       top: 300px;
@@ -45,7 +36,6 @@
       transform: rotate(-20deg);
    }
   }
-  /* keyframes plane-right animation and rotating for the plan when land */
   
   @keyframes plane-move-right { 
    0% {
@@ -62,19 +52,16 @@
       transform: rotate(0deg);
    }
   }
-
-/* This is the styling and animation for the first cloud element*/
+  
   .cloud1 {
     width: 150px;
     top: 50px;
     left: 50px;
     position: relative;
     opacity: 0.9;
-    z-index: 1;
     animation: cloud-move-left2 4s linear 0s 1 forwards;
   }
   
-  /* This is the keyframe for the cloudmove-left animation*/
   @keyframes cloud-move-left2 {
    0% {
       top: 100px; 
@@ -85,29 +72,25 @@
       left: -650px;
    }
   }
-
-  /* Styling and animating for the  second coud and it connects to the keyrames tha tells it where to move*/
+  
   .cloud2 {
     width: 150px;
     top: 50px;
     left: 50px;
     position: relative;
     opacity: 0.9;
-    z-index: 1;
     animation: cloud-move-left1 3s linear 0s 1 forwards;
   }
-  /* styling and animation ofr cloud 3 */
+  
   .cloud3 {
    width: 150px;
    top: 50px;
    left: 50px;
    position: relative;
    opacity: 0.9;
-   z-index: 1;
    animation: cloud-move-left2 4s linear 0s 1 forwards; 
   }
   
-  /* keyframes for cloud to move left1 animation and out off the map */
   @keyframes cloud-move-left1 {
    0% {
         top: 100px; 

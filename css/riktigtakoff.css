@@ -1,9 +1,7 @@
-/* This is for background image */
 #container {
    background-image: url(/images/airstrip.png);
 }
 
-/* this is for the plan take off animation and styling for the plane*/
 .airplane {
  width: 200px;
  top: 500px;
@@ -15,7 +13,7 @@
  transform: scaleX(-1);
 }
 
-/* this code is for the plane-mov-left animation */
+
 @keyframes plane-move-left {
 50% {
    transform: scaleX(-1) rotate(0deg);
@@ -30,7 +28,6 @@
 }
 }
 
-/*this is for plane lift-of animation */
 @keyframes plane-lift-off {
 0% {
    top: 500px;
@@ -40,11 +37,10 @@
 100% {
    top: 200px;
    left: 100px;
-   transform: scaleX(-1) rotate(-15deg);
+   transform: scaleX(-1) rotate(-10deg);
 }
 }
 
-/* this is for plane straighten animation */
 @keyframes plane-straighten {
 0% {
    top: 200px;
@@ -58,7 +54,7 @@
  }
 }
 
-/* first cloud styling and animation */
+
 .cloud1 {
  width: 150px;
  position: relative;
@@ -68,7 +64,6 @@
  animation: cloud-move-right1 4s linear 0s 1 forwards;
 }
 
-/*keyframes for animation move right and final position for the cloud*/
 @keyframes cloud-move-right1 {
 100% {
    top: 50px;
@@ -76,7 +71,6 @@
 }
 }
 
-/* styling an animation for second cloud and it is similat like the first cloud */
 .cloud2 {
  width: 150px;
  position: relative;
@@ -86,7 +80,6 @@
  animation: cloud-move-right2 3s linear 0s 1 forwards;
 }
 
-/* keyframes for second cloud and it is whery similar*/
 @keyframes cloud-move-right2 {
 100% {
    top: 150px;
@@ -94,7 +87,6 @@
 }
 }
 
-/*animation and styling for the third cloud */
 .cloud3 {
 width: 150px;
 position: relative;
@@ -104,69 +96,9 @@ opacity: 0.8;
 animation: cloud-move-right3 4s linear 0s 1 forwards;
 }
 
-/* keyframes for the third cloud and animations to move right and it has the same final posistion ass the other cloud*/
 @keyframes cloud-move-right3 {
 100% {
     top: 150px;
     right: 700px;
 }
-}
-
-
-#ufo {
-   position: relative;
-   width:200px;
-   top: 100px;
-   right: -700px;
-   animation: ufo-move-left 4s 4.5s linear;
-
-}
-
-@keyframes ufo-move-left{
- 0%{
-   top:100px;
-   right:-700px;
- }
- 100% {
-   top: 100px;
-   right: 1200px;
-
- }
-
-}
-
-#text-box {
-   position: absolute;
-   display: flex;
-   opacity: 0;
-   justify-content: center;
-   align-items: center;
-   flex-direction: column;
-   width: 600px;
-   background-color: rgb(255, 255, 255, 0.3);
-   border: rgba(230, 230, 230, 1) 2px solid;
-   height: 150px;
-   top: 170px;
-   left: 490px;
-   animation: fade-in 1s 6s 1 linear forwards;
-   
-}
-
-.quote {
-   margin: 0;
-   text-shadow: 
-      -1px -1px 0 rgba(0, 0, 0, 1),
-      -1px -1px 0 rgba(0, 0, 0, 1),
-      -1px -1px 0 rgba(0, 0, 0, 1),
-      -1px -1px 0 rgba(0, 0, 0, 1)
-   ;
-   font-size: 50px;
-   color: rgb(255, 220, 1, 1);
-   border: rgb(255, 255, 255, 0.1) solid 2px;
-}
-
-@keyframes fade-in {
-   100% {
-      opacity: 1;
-   }
 }

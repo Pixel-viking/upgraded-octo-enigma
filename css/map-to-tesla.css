@@ -25,7 +25,6 @@
     width: 160px;
     height: 110px;
     cursor: pointer;
-    border: solid 2px red;
 }
 
 /* Makes the text fade in, I put the every curclybracket in line to make it easier to read as there's only one line per bracket */
@@ -92,7 +91,6 @@ h1 {
     top: -50px;
     left: -250px;
     
-    border: solid 2px red;
     border-radius: 50%;
     transform: translateX(var(--orbit-size-half));
 

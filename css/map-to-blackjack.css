@@ -9,7 +9,7 @@
     border: solid 20px rgba(255,220,1,1);
     background: rgba(245,245,245,1);
     left: 790px;
-    z-index: 2;
+    z-index: 4;
 }
 
 #storyboard-container img {
@@ -25,7 +25,6 @@
     width: 110px;
     height: 110px;
     cursor: pointer;
-    border: solid 2px red;
     z-index: 2;
 }
 
@@ -95,49 +94,37 @@ h1 {
     top: -50px;
     left: -250px;
     
-    border: solid 2px red;
     border-radius: 50%;
     transform: translateX(var(--orbit-size-half));
 
     /* Animation-timer and iterations needs to be synced between "ufo-orbit" and "ufo-counter-rotate" keyframes
        I added variables for easy editing so we don't have to do head math every time we change something */
     --ufo-flies-in-delay: 0s;
-    --ufo-flies-in-duration: 4s;
+    --ufo-flies-in-duration: 1.5s;
 
     /* For the orbit animation */
-    --orbit-timer: 1.5s; /* Duration of each orbit */
-    --orbit-iterations: 4; /* Number of orbits */
+    --orbit-timer: 1s; /* Duration of each orbit */
+    --orbit-iterations: 5; /* Number of orbits */
     --orbit-delay: calc(var(--ufo-flies-in-duration) + var(--ufo-flies-in-delay)); /* Delay for starting the orbit */
 
     /* For the ufo flies away animation */
-    --ufo-flies-away-duration: 0.5s; /* How fast it flies away */
+    --ufo-flies-away-duration: 2s; /* How fast it flies away */
     --ufo-flies-away-delay: calc(var(--orbit-delay) + var(--orbit-timer) * var(--orbit-iterations)); /* Delay for flying away */
 }
 
 #ufo-container {
-    animation:  ufo-flies-in var(--ufo-flies-in-duration) ease-in-out var(--ufo-flies-in-delay) forwards,
+    animation:  ufo-flies-in var(--ufo-flies-in-duration) linear var(--ufo-flies-in-delay) forwards,
                 ufo-orbit var(--orbit-timer) linear var(--orbit-delay) var(--orbit-iterations),
-                ufo-flies-away var(--ufo-flies-away-duration) ease-in var(--ufo-flies-away-delay) forwards;
+                ufo-flies-away var(--ufo-flies-away-duration) ease-in-out var(--ufo-flies-away-delay) forwards;
 }
 
 @keyframes ufo-flies-in {
-    0% {  /* Start Position */
+    0% {  /* Start Position Under storyboard */
         top: 360px; 
         left: 820px;
         transform: translateX(var(--orbit-size-half)) scale(1.4);
-        z-index: 1;
     }
-    40% {
-        top: 380px;
-        left: 300px;
-        transform: translateX(var(--orbit-size-half)) scale(1.5) rotateZ(-10deg);
-    }
-    80% {
-        top: 380px;
-        left: 300px;
-        transform: translateX(var(--orbit-size-half)) scale(1.5) rotateZ(10deg);
-    }
-    100% {  /* To the elvis chapel */
+    100% {  /* To the casino */
         top: 440px;
         left: 50px;
         transform: translateX(var(--orbit-size-half)) scale(1.5);
@@ -155,9 +142,35 @@ h1 {
 }
 
 @keyframes ufo-flies-away {
-    100% {  /* End Position */
+    0% { /* Start from the casino */
+        top: 440px;
+        left: 50px;
+        transform: translateX(var(--orbit-size-half)) scale(1.5);
+    }
+    10% { /* Flies to the tesla */
+        top: 380px;
+        left: 315px;
+        transform: translateX(var(--orbit-size-half)) scale(1.5) rotateZ(-10deg);
+    }
+    70% {/* Stays at the tesla for a while, tractor beaming it */
+        top: 380px;
+        left: 315px;
+        transform: translateX(var(--orbit-size-half)) scale(1.5) rotateZ(10deg);
+    }
+    75% { /* Flies down a little spots something */
+        top: 450px;
+        left: 130px;
+        transform: translateX(var(--orbit-size-half)) scale(1.55) rotateZ(0deg);
+    }
+    90% {   /* Realize it's a F-35 Fighter  */
+        top: 450px;
+        left: 130px;
+        transform: translateX(var(--orbit-size-half)) scale(1.55) rotateZ(0deg);
+
+    }
+    100% {  /* Flies away from the F-35 Fighter Jet */
         top: -150px; 
-        left: 500px;
+        left: 900px;
         transform: translateX(var(--orbit-size-half)) scale(0.8);
     }
 }
@@ -168,7 +181,6 @@ h1 {
 
     top: 50%;
     left: 50%;  
-    /* transform: translate(-50%, -50%); */
     
     animation: ufo-counter-rotate var(--orbit-timer) linear var(--orbit-delay) var(--orbit-iterations);
     z-index: 2;
@@ -187,41 +199,124 @@ h1 {
 
 #tesla-car {
     position: absolute;
-    width: 50px;
+    width: 40px;
     top: 500px;
-    left: 675px;
+    left: 800px;
     z-index: 1;
 
-    animation: tesla-drive 3s ease-out 0s forwards
+    animation: tesla-drive 3s ease-out 0s forwards,
+                tesla-tractored 1s ease-in 6.7s forwards;
 }
+
 @keyframes tesla-drive {
     100% {
         left: 425px;
     }
 }
+
+@keyframes tesla-tractored {
+    0% {
+        left: 425px;
+        transform: scale(1) rotate(-5deg);
+    }
+    20% {
+        transform: scale(0.95) rotate(5deg);
+    }
+    40% {
+        transform: scale(0.90) rotate(-5deg);
+    }
+    60% {
+        transform: scale(0.85) rotate(5deg);
+        opacity: 1;
+    }
+    80% {
+        transform: scale(0.80) rotate(-5deg);
+        opacity: 1;
+    }
+    100% {
+        left: 425px;
+        top: 480px;
+        transform: scale(0.65);
+        opacity: 0;
+    }
+}
+
 /*TODO: Add tesla getting tractored animation*/
+#tractor-beam {
+    position: absolute;
+
+    z-index: 5;
+    top: 455px;
+    left: 430px;  
+    
+    width: 30px;
+    height: 45px;   
+
+    opacity: 0;
+    z-index: 1;
+    background: rgba(0, 255, 255,0.8);
+    transform: perspective(20px) rotateX(25deg);
+
+    animation: tractor-beaming 1s linear 6.7s forwards;
+}
+
+@keyframes tractor-beaming {
+    0% {
+        opacity: 1;
+    }
+    10% {
+        opacity: 0.2;
+    }
+    15% {
+        opacity: 0.9;
+    }
+    17% {
+        opacity: 1;
+    }
+    18% {
+        opacity: 0.7;
+    }
+    20% {
+        opacity: 0.4;
+    }
+    30% {
+        opacity: 0.12;
+    }
+    99% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+#fighter-jet {
+    position: absolute;
+    width: 60px;
+    left: -100px;
+    top: 700px;
+    transform: scaleX(-1) rotate(75deg) scale(1);
+    z-index: 2;
+
+    animation: fighter-jet-chase 2s linear 8s forwards;
+}
+
+@keyframes fighter-jet-chase {
+    0% {
+        left: -100px;
+        top: 700px;
+        transform: scaleX(-1) rotate(75deg) scale(1);
+    }
+    100% {
+        left: 900px;
+        top: -100px;
+        transform: scaleX(-1) rotate(75deg) scale(0.5);;
+    }
+}
+
+/* Piece of the map that the tesla drives under */
 #map-sign-zdex {
     position: absolute;
     z-index: 2;
     top: -13px;
     left: 0px;
-}
-
-#fighter-jet {
-    position: absolute;
-    width: 50px;
-    transform: scaleX(-1) rotate(75deg) scale(1);
-    z-index: 2;
-
-    animation: fighter-jet-chase 1.5s linear 0s forwards;
-}
-@keyframes fighter-jet-chase {
-    0% {
-        left: 50px;
-        top: 700px;
-    }
-    100% {
-        left: 600px;
-        top: -100px;
-    }
 }

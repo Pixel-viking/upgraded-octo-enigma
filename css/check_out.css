@@ -1,0 +1,157 @@
+#container {
+    background-image: url(../images/resepsjonsbilde.png); }
+    
+    /*the keys */
+    .clickable {
+        position: absolute;
+        z-index: 12;
+        left: 700px;
+        top: 870px;
+        transition: transform 1s ease;
+        animation-name: nokler;
+         animation-duration: 2s;
+         animation-timing-function: linear;
+         animation-delay: 6s;
+         animation-iteration-count: 1;
+         animation-fill-mode: forwards;
+         opacity: 0;
+        
+    }
+    
+    
+    /*animation keys */
+    @keyframes nokler {
+        0% {
+            transform: translateX(0px) translateY(0px);
+            opacity: 0;
+        }
+        40% {
+            opacity: 0;
+        }
+        100% {
+            transform: translateX(-350px) translateY(-260px);
+            opacity: 1;
+        }
+    }
+  /*chatbox */
+    .chat-box2 {
+        position: absolute;
+        background-color: rgba(230, 230, 230, 0.7);
+        height: 130px;
+        width: 450px;
+        border: solid rgba(200, 200, 200, 0.75) 2px;
+        margin: 0%;
+        padding: 0%;
+        z-index: 3;
+        top: 338px;
+        left: 850px;
+    
+    }
+
+    .welcome-text {
+        display: inline-block;
+       padding-bottom: 10px;
+    }
+/*the text */
+    .text {
+        opacity: 0;
+        font-size: 17px;
+        letter-spacing: 5px;
+        font-family: monospace;
+        border-right: 5px;
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        /* cursor .4s step-end infinite alternate; */
+
+         z-index: 4;
+    }
+    /*animation line 1 */
+    #line1 {
+        animation: typing 3s linear 0s 1 forwards; 
+
+    }
+    /*animation line 2 */
+    #line2 {
+        animation: typing 3s linear 3s 1 forwards; 
+
+    }
+    /*animation line 3 */
+    #line3 {
+        animation: typing 3s linear 6s 1 forwards; 
+
+    }
+    #text2{
+        animation-delay: typing 7s;
+        animation-delay: 9s, 9s;
+    }
+    /*writing animation */
+    @keyframes cursor {
+        50% {  border-color: transparent;}
+    }
+    @keyframes typing {
+        0% {
+            opacity: 1;
+            width: 0;
+        }
+        100% {
+                    opacity: 1;
+
+        }
+    }
+    /* The hand and the animation */
+    .hand {
+    
+        padding-left: 670px;
+        padding-top: 800px;
+        transition: transform 1s ease;
+        z-index: 12;
+        animation-name: hands;
+        animation-duration: 4s;
+        animation-timing-function: linear;
+        animation-delay: 6s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+    }
+    /* Animation direction of the hand */
+    @keyframes hands {
+        0% {
+            transform: translateX(0px) translateY(0px);
+            
+        }
+        50% {
+            transform: translateX(-350px) translateY(-260px);
+            
+        }
+        100% {
+            transform: translateX(0px) translateY(0px);
+        }
+    }
+       /* Button outlay */ 
+    .button {
+        background-color: rgba(230, 230, 230, 1);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        font-family: sans-serif;
+        opacity: 0;
+        visibility: hidden;
+        animation: button 1s linear 10s forwards;
+    }
+    /* From hidden to visible */
+    @keyframes button {
+        0% {
+            opacity: 0;
+            visibility: hidden;
+        }
+        100% {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+    }
+    .button:hover {
+        background-color: grey;
+    }

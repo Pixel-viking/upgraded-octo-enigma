@@ -1,0 +1,135 @@
+
+#container {
+background-image: url(../images/resepsjonsbilde.png); }
+
+/* The keys*/
+.clickable {
+    position: absolute;
+    z-index: 10;
+    left: 200px;
+    top: 600px;
+    transition: transform 2s ease;
+    animation-name: nokler;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-delay: 7s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+
+}
+
+
+/*animation keys*/
+@keyframes nokler {
+    0% {
+        transform: translateX(0px) translateY(0px);
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(510px) translateY(250px);
+        opacity: 0;
+    }
+}
+
+/* The chatbox behind the text*/
+.chat-box2 {
+    position: absolute;
+    background-color: rgba(230, 230, 230, 0.7);
+    height: 50px;
+    width: 420px;
+    border: solid rgba(200, 200, 200, 0.75) 2px;
+    margin: 0%;
+    padding: 0%;
+    z-index: 3;
+    top: 175px;
+    left: 850px;
+
+}
+.welcome-text {
+    display: inline-block;
+}
+/* The text inside the textbox*/
+.text {
+    font-size: 17px;
+    letter-spacing: 5px;
+    font-family: sans-serif;
+    border-right: 5px;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 7s, 
+    cursor .4s step-end infinite alternate;
+}
+
+#text2{
+    animation-delay: typing 7s;
+    animation-delay: 9s, 9s;
+}
+/* the typing animation*/
+@keyframes cursor {
+    50% {  border-color: transparent;}
+}
+@keyframes typing {
+    from {width: 0;}
+}
+
+/* The hand animation and the hand placement*/
+.hand {
+    
+    padding-left: 680px;
+    padding-top: 800px;
+    transition: transform 1s ease;
+    z-index: 12;
+    animation-name: hands;
+    animation-duration: 6s;
+    animation-timing-function: linear;
+    animation-delay: 4s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+/* The animation from start to end*/
+@keyframes hands {
+    0% {
+        transform: translateX(0px) translateY(0px);
+        
+    }
+    50% {
+        transform: translateX(-510px) translateY(-250px);
+        
+    }
+    100% {
+        transform: translateX(0px) translateY(0px);
+    }
+}
+/* Button outlay */
+.button {
+    background-color: rgba(230, 230, 230, 1);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: sans-serif;
+    opacity: 0;
+    visibility: hidden;
+    animation: button 1s linear 10s forwards;
+    
+}
+/* Button hidden to visible*/
+@keyframes button {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+    }
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+}
+.button:hover {
+    background-color: grey;
+}

@@ -1,0 +1,76 @@
+#storyboard-container {
+    display: block;
+    position: relative;
+    
+    text-align: center;
+    max-width: 536px;
+    height: 728px;
+
+    border: solid 20px rgba(255,220,1,1);
+    background: rgba(245,245,245,1);
+    left: 790px;
+    z-index: 2;
+}
+
+#storyboard-container img {
+    height: 250px;
+    padding: 0px 10px 0px 10px
+}
+
+#hotel-link {
+    position: absolute;
+
+    top: 650px;
+    left: 460px;
+    width: 110px;
+    height: 110px;
+    cursor: pointer;
+}
+
+/* Makes the text fade in, I put the every curclybracket in line to make it easier to read as there's only one line per bracket */
+#line1, #line2, #line3, #line4, #line5 {
+    opacity: 0;
+    animation-name: chat-text-appear;
+    animation-duration: 1s;
+    animation-timing-function: ease; 
+    animation-fill-mode: forwards;
+}
+
+#line1 { animation-delay: 1s; }
+#line2 { animation-delay: 2s; }
+#line3 { animation-delay: 3s; }
+#line4 { animation-delay: 4s; }
+#line5 { animation-delay: 5s; }
+
+h1 {
+    position: relative;
+    opacity: 0;
+    z-index: 2;
+
+    animation:  chat-text-appear 1s ease 6s 1 forwards, 
+                shake-text 1s ease-out 7s infinite forwards;
+}
+
+@keyframes chat-text-appear {
+    100% { opacity: 1; }
+}
+
+@keyframes shake-text {
+    0% {
+        transform: rotate(0deg);
+    }
+    10% {
+        transform: rotate(5deg);
+    }
+    20% {
+        transform: rotate(-5deg);
+    }
+    30% {
+        transform: rotate(5deg);
+    }
+    40% {
+        transform: rotate(-5deg);
+    }
+}
+
+/* No Aliens or any forms of extra-terrestrials here in this CSS */
