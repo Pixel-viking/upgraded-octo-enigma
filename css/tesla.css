@@ -1,0 +1,576 @@
+/* ------------------ Starting css rules ------------------ */
+
+#container {
+    background-image: url(../images/tesla_shop.png);
+    overflow: hidden;
+}
+
+#cash-container {
+    left: 20px;
+    top: 670px;
+}
+
+.employee {
+    position: relative;
+    left: 600px;
+    bottom: 100px;
+}
+
+/*
+    Under is the positioning for the screen that the salesman apears on.
+
+*/
+.screen-box {
+    overflow: hidden;
+    z-index: 1;
+    position: absolute;
+    display: flex;
+    top: 445px;
+    width: 171px;
+    height: 130px;
+    background-color: rgba(0, 0, 0, 1);
+    left: 790px;
+    transform: rotate(-2deg);
+}
+
+.tesla-salesmann-no-mouth { 
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 130px;
+    animation: moving-on-screen 2s forwards;
+}
+
+.tesla-salesmann-mouth {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    animation: talking-1 0.4s 12 2s, moving-on-screen 2s 1;
+}
+
+.chat-box {
+    top: 600px;
+    left: 800px;
+}
+
+.chat-content {
+    width: 0px;
+    white-space: nowrap;
+    max-width: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+
+}
+
+#hamster-wheel { 
+    position: absolute; 
+    top: 130px; 
+    height: 100%; 
+    width: 100%; 
+}
+
+.next-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 30px;
+    width: 50px;
+    top: 710px;
+    left: 1190px;
+    z-index: 4;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-2,
+.button-3,
+.button-4,
+#next-sentence,
+#next-sentence-2,
+#next-sentence-3,
+#next-sentence-4 {
+    display: none; 
+}
+
+#elon-musk {
+    height: 400px;
+    z-index: 999;
+}
+
+#musk-container {
+    transform: rotate(90deg);
+    left: 350px;
+    bottom: 800px;
+    position: absolute;
+}
+
+/* Flames for the rocket that elon is holding */
+#rocket-flames {
+    position: absolute;
+    width: 10px;
+    height: 100px;
+    top: 225px;
+    left: 68px;
+    background: linear-gradient(rgba(200, 10, 10, 1), rgba(226, 88, 34, 1) 30%, transparent); 
+    /* 
+        Linear gradiant is used as an easy way to change the colors in dynamic ways
+        without the use if pictures 
+    */
+    animation: flames-moving 0.1s infinite;
+    display: none;
+    
+}
+
+#sound-effect-kapow {
+    display: none;
+    position: absolute;
+    top: 200px;
+    left: 350px;
+    height: 200px;
+    width: auto;
+}
+
+#sound-effect-crack {
+    opacity: 0%;
+    position: absolute;
+    top: 600px;
+    left: 250px;
+    height: 150px;
+    width: auto;
+}
+
+#floor-crack {
+    position: absolute;
+    left: 350px;
+    bottom: 150px;
+    height: 200px;
+    width: 0px;
+}
+
+#leave {
+    position: absolute;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 1);
+    display: none;
+    top: 690px;
+    left: 1020px;
+    z-index: 4;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(230, 230, 230, 0.5);
+    height: 50px;
+    width: 200px;
+    border: solid rgba(200, 200, 200, 0.75) 2px;
+    margin: 0%;
+    padding: 0%;
+    z-index: 4;
+}
+
+/* ------------------ Animations ------------------ */
+
+
+/* #Salesmann related */
+
+/* 
+    I had a problem with just using one animation for all the talking.
+    It seems that animating the same element with the same animation multiple times
+    using iteration count does not work unless you activate the animation right after
+    the previous one.
+    I think this comes from that the iteration count keeeps going in the background,
+    even when the animation is done with the last defined iteration.
+    There might be a way to work around this, but I couldn't find it.
+
+*/
+
+@keyframes talking-1 {
+    0% {
+        top: 0;
+    }
+    25% {
+        top: 5px;
+        transform:rotate(2deg);
+    }
+    50% {
+        top: 10px;
+        transform:rotate(0deg);
+    }
+    75% {
+        top: 5px;
+        transform:rotate(-2deg);
+    }
+    100% {
+        top: 0px;
+        transform:rotate(0deg);
+    }
+}
+
+@keyframes talking-2 {
+    0% {
+        top: 0;
+    }
+    25% {
+        top: 5px;
+        transform:rotate(2deg);
+    }
+    50% {
+        top: 10px;
+        transform:rotate(0deg);
+    }
+    75% {
+        top: 5px;
+        transform:rotate(-2deg);
+    }
+    100% {
+        top: 0px;
+        transform:rotate(0deg);
+    }
+}
+
+@keyframes talking-3 {
+    0% {
+        top: 0;
+    }
+    25% {
+        top: 5px;
+        transform:rotate(2deg);
+    }
+    50% {
+        top: 10px;
+        transform:rotate(0deg);
+    }
+    75% {
+        top: 5px;
+        transform:rotate(-2deg);
+    }
+    100% {
+        top: 0px;
+        transform:rotate(0deg);
+    }
+}
+
+@keyframes moving-on-screen {
+    0% {
+        top: 130px;
+    }
+    100% {
+        top: 0px;
+    }
+}
+
+@keyframes alexander-suprised {
+    0% {
+        top: 0px;
+    }
+    75% {
+        top: -20px;
+    }
+    100% {
+        top: 0px;
+    }
+}
+
+/* Animations for Elon Musk */
+
+@keyframes flames-moving {
+    0% {
+        background: linear-gradient(rgba(200, 10, 10, 1), rgba(226, 88, 34, 1) 30%, transparent)
+    }
+    50% {
+        background: linear-gradient(rgba(200, 10, 10, 1) 30%, rgba(226, 88, 34, 1) 60%, transparent)
+    }
+    100% {
+        background: linear-gradient(rgba(200, 10, 10, 1) 0%, rgba(226, 88, 34, 1) 70%, transparent)
+    }
+}
+
+@keyframes elon-falls-through-roof {
+    0% {
+        bottom: 800px;
+    }
+    50% {
+        bottom: 90px;
+    }
+    75% {
+        bottom: 200px;
+    }
+    80% {
+        bottom: 90px;
+    }
+    90% {
+        bottom: 120px;
+    }
+    100% {
+        bottom: 90px;
+    }
+}
+
+@keyframes elon-get-up {
+    0%{
+        bottom: 90px
+    }
+    50% {
+        bottom: 120px;
+        transform: rotate(0deg);
+    }
+    100% {
+        bottom: 120px;
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes crack-appears {
+    0% {
+        width: 0px;
+    }
+    100% {
+        width: auto;
+    }
+}
+
+@keyframes elon-flies-away {
+    0% {
+        bottom: 120px;
+        transform: rotate(0deg);
+    }
+    100% {
+        bottom: 900px;
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes shake {
+    0% {
+        left: 350px;
+    }
+    25% {
+        left: 348px;
+    }
+    50% {
+        left: 350px;
+    }
+    75% {
+        left: 352px;
+    }
+    100% {
+        left: 350px;
+    }
+}
+
+
+@keyframes effekt-disapears {
+    0% {
+        opacity: 100%;
+    }
+    100% {
+        opacity: 0%;
+    }
+}
+
+/* Text realted animation */
+
+@keyframes text-appears {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+
+
+/* ------------------ Checkbox events ------------------ */
+
+/*
+    Each line needs it's own animaiton to prevent overflow. 
+*/
+
+.chat-content.line-1 {
+    animation: text-appears 2s 2s 1 steps(60, end) forwards;
+}
+
+.chat-content.line-2 {
+    animation: text-appears 2s 4s 1 steps(60, end) forwards;
+}
+
+.chat-content.line-3 {
+    animation: text-appears 2s 6s 1 steps(60, end) forwards;
+}
+/* Under is what happenes when you click the "neste" button on the webpage */
+
+
+/* Animations that happen on the laptop screen */
+#next-sentence:checked ~ .screen-box .tesla-salesmann-mouth {
+    animation: talking-2 0.4s 12; 
+}
+
+#next-sentence:checked ~ .screen-box #hamster-wheel { 
+    animation: moving-on-screen 2s 6s forwards; 
+} 
+
+/* Text appears animations */
+
+#next-sentence:checked ~ .chat-box .line-4 {
+    animation: text-appears 2s 1 steps(60, end) forwards;
+}
+
+#next-sentence:checked ~ .chat-box .line-5 {
+    animation: text-appears 2s 2s 1 steps(60, end) forwards;
+}
+
+#next-sentence:checked ~ .chat-box .line-6 {
+    animation: text-appears 2s 4s 1 steps(60, end) forwards;
+}
+
+#next-sentence:checked ~ .chat-box .first-par,
+#next-sentence:checked ~ .next-button {
+    display: none;
+}
+
+#next-sentence:checked ~ .next-button.button-2 { /*Need a new button in order for the next sentence to be shown*/
+    display: flex;
+}
+
+ 
+/* Second next button is clicked*/ 
+ 
+#next-sentence-2:checked ~ .next-button.button-2,
+#next-sentence-2:checked ~ .screen-box #hamster-wheel,
+#next-sentence-2:checked ~ .chat-box .second-par { 
+    display: none; 
+}
+ 
+/* next paragraph shows up */ 
+#next-sentence-2:checked ~ .chat-box .line-7 { 
+    animation: text-appears 2s 1 steps(60, end) forwards; 
+} 
+ 
+#next-sentence-2:checked ~ .chat-box .line-8 { 
+    animation: text-appears 2s 2s 1 steps(60, end) forwards; 
+} 
+#next-sentence-2:checked ~ .screen-box .tesla-salesmann-mouth {
+    animation: talking-3 0.4s 10;
+}
+
+#next-sentence-2:checked ~ .next-button.button-2,
+#next-sentence-2:checked ~ .screen-box #hamster-wheel,
+#next-sentence-2:checked ~ .chat-box .second-par{
+    display: none;
+}
+
+/* next paragraph shows up */
+#next-sentence-2:checked ~ .chat-box .line-7 {
+    animation: text-appears 2s 1 steps(60, end) forwards;
+}
+
+#next-sentence-2:checked ~ .chat-box .line-8 {
+    animation: text-appears 2s 2s 1 steps(60, end) forwards;
+}
+
+#next-sentence-2:checked ~ .button-3 {
+    display: flex;
+} 
+
+/* #Elon musk */
+
+
+#next-sentence-3:checked ~ .button-3{
+    display: none;
+}
+
+#next-sentence-3:checked ~ #sound-effect-kapow{
+    display: block;
+    animation: effekt-disapears 0.5s 1.5s 1 forwards;
+
+}
+
+#next-sentence-3:checked ~ #sound-effect-crack{
+    animation: effekt-disapears 1.5s 2s 1 forwards;
+
+}
+
+#next-sentence-3:checked ~ .chat-box .third-par {
+    display: none;
+}
+
+#next-sentence-3:checked ~ .screen-box .tesla-salesmann-no-mouth {
+    animation: alexander-suprised 10s 1 forwards; 
+}
+
+#next-sentence-3:checked ~ #floor-crack {
+    animation-name: crack-appears;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-delay: 1.7s;
+}
+
+#next-sentence-3:checked ~ #musk-container {
+    animation-name: elon-falls-through-roof, elon-get-up;
+    animation-duration: 2s, 1s;
+    animation-iteration-count: 1, 1;
+    animation-timing-function: linear, linear;
+    animation-delay: 1s, 4s;
+    animation-fill-mode: forwards, forwards;
+}
+
+#next-sentence-3:checked ~ .chat-box .line-9 {
+    animation: text-appears 1s 4.5s 1 steps(60, end) forwards;
+}
+
+#next-sentence-3:checked ~ .chat-box .line-10 {
+    animation: text-appears 1s 5.5s 1 steps(60, end) forwards;
+}
+
+#next-sentence-3:checked ~ .chat-box .line-11 {
+    animation: text-appears 1s 6.5s 1 steps(60, end) forwards;
+}
+
+#next-sentence-3:checked ~ .button-4 {
+    display: flex;
+    width: 100px;
+    height: 40px;
+    left: 1140px;
+    top: 700px;;
+}
+
+
+/* Sounds good to me baby is clicked */
+#next-sentence-4:checked ~ #musk-container #rocket-flames {
+    display: block;
+}
+
+#next-sentence-4:checked ~ #musk-container {
+    animation: elon-flies-away 3s 1 forwards ease-in, shake 0.2s infinite;
+}
+
+#next-sentence-4:checked ~ .button-4 {
+    display: none;
+}
+
+#next-sentence-4:checked ~ .chat-box .fourth-par {
+    display: none;
+}
+
+#next-sentence-4:checked ~ .chat-box .line-12 {
+    animation: text-appears 2s 1 steps(60, end) forwards;
+}
+
+#next-sentence-4:checked ~ .chat-box .line-13 {
+    animation: text-appears 2s 1s 1 steps(60, end) forwards;
+}
+#next-sentence-4:checked ~ .chat-box .line-14 {
+    animation: text-appears 2s 4s 1 steps(60, end) forwards;
+}
+#next-sentence-4:checked ~ .chat-box .line-15 {
+    animation: text-appears 2s 6s 1 steps(60, end) forwards;
+}
+
+#next-sentence-4:checked ~ #leave {
+    display: flex;
+}
+
