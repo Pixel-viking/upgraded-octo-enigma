@@ -76,7 +76,6 @@ h1 {
     }
 }
 
-
 #ufo-container {
      /* Ufo size and scaling. The scale it gets to its target, might have to change it manually on the fly away animation */
     --ufo-size: 50px;
@@ -87,7 +86,6 @@ h1 {
     left: -250px;
     
     border-radius: 50%;
-    transform: translateX(var(--orbit-size-half));
 }
 
 #ufo-container {

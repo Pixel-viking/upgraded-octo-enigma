@@ -40,7 +40,7 @@
 100% {
    top: 200px;
    left: 100px;
-   transform: scaleX(-1) rotate(-15deg);
+   transform: scaleX(-1) rotate(-20deg);
 }
 }
 
@@ -65,7 +65,7 @@
  top: 50px;
  right: -1200px;
  opacity: 0.8;
- animation: cloud-move-right1 4s linear 0s 1 forwards;
+ animation: cloud-move-right1 4s linear 0s infinite forwards;
 }
 
 /*keyframes for animation move right and final position for the cloud*/
@@ -83,7 +83,7 @@
  top: 50px;
  right: -1200px;
  opacity: 0.8;
- animation: cloud-move-right2 3s linear 0s 1 forwards;
+ animation: cloud-move-right2 3s linear 0s infinite forwards;
 }
 
 /* keyframes for second cloud and it is whery similar*/
@@ -101,7 +101,7 @@ position: relative;
 top: 50px;
 right: -1200px;
 opacity: 0.8;
-animation: cloud-move-right3 4s linear 0s 1 forwards;
+animation: cloud-move-right3 4s linear 0s infinite forwards;
 }
 
 /* keyframes for the third cloud and animations to move right and it has the same final posistion ass the other cloud*/
@@ -116,19 +116,20 @@ animation: cloud-move-right3 4s linear 0s 1 forwards;
 #ufo {
    position: relative;
    width:200px;
-   top: 100px;
+   top: 180px;
    right: -700px;
    animation: ufo-move-left 4s 4.5s linear;
+   z-index:2
 
 }
 
 @keyframes ufo-move-left{
  0%{
-   top:100px;
+   top:180px;
    right:-700px;
  }
  100% {
-   top: 100px;
+   top: 180px;
    right: 1200px;
 
  }
@@ -145,9 +146,10 @@ animation: cloud-move-right3 4s linear 0s 1 forwards;
    width: 600px;
    background-color: rgb(255, 255, 255, 0.3);
    border: rgba(230, 230, 230, 1) 2px solid;
+   border-radius: 5px;
    height: 150px;
    top: 170px;
-   left: 490px;
+   left: 400px;
    animation: fade-in 1s 6s 1 linear forwards;
    
 }

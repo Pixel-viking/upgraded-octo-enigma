@@ -1,7 +1,7 @@
 /* ------------------ Starting css rules ------------------ */
 
 #container {
-    background-image: url(../images/tesla_shop.png);
+    background-image: url(../images/tesla-shop.png);
     overflow: hidden;
 }
 
@@ -82,14 +82,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     position: absolute;
-    height: 30px;
-    width: 50px;
-    top: 710px;
-    left: 1190px;
+    height: 50px;
+    width: 100px;
+    top: 690px;
+    left: 1140px;
     z-index: 4;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+    border: 2px solid rgba(240,240,240,1);
 }
 
 .button-2,
@@ -112,7 +115,7 @@
 #musk-container {
     transform: rotate(90deg);
     left: 350px;
-    bottom: 800px;
+    top: -300px;
     position: absolute;
 }
 
@@ -155,7 +158,7 @@
 #floor-crack {
     position: absolute;
     left: 350px;
-    bottom: 150px;
+    top: 550px;
     height: 200px;
     width: 0px;
 }
@@ -166,14 +169,15 @@
     color: rgba(0, 0, 0, 1);
     display: none;
     top: 690px;
-    left: 1020px;
+    left: 1040px;
     z-index: 4;
     justify-content: center;
     align-items: center;
-    background-color: rgba(230, 230, 230, 0.5);
+    background-color: rgba(230, 230, 230, 0.8);
     height: 50px;
     width: 200px;
-    border: solid rgba(200, 200, 200, 0.75) 2px;
+    border: solid rgba(240,240,240,1) 2px;
+    border-radius: 5px;
     margin: 0%;
     padding: 0%;
     z-index: 4;
@@ -320,36 +324,36 @@
 }
 
 @keyframes elon-falls-through-roof {
-    0% {
-        bottom: 800px;
+    10% {
+        top: -100px;
     }
     50% {
-        bottom: 90px;
+        top: 200px;
     }
     75% {
-        bottom: 200px;
+        top: 400px;
     }
     80% {
-        bottom: 90px;
+        top: 430px;
     }
     90% {
-        bottom: 120px;
+        top: 400px;
     }
     100% {
-        bottom: 90px;
+        top: 430px;
     }
 }
 
 @keyframes elon-get-up {
     0%{
-        bottom: 90px
+        top: 320px
     }
     50% {
-        bottom: 120px;
+        top: 320px;
         transform: rotate(0deg);
     }
     100% {
-        bottom: 120px;
+        top: 320px;
         transform: rotate(0deg);
     }
 }
@@ -381,11 +385,11 @@
 
 @keyframes elon-flies-away {
     0% {
-        bottom: 120px;
+        top: 320px;
         transform: rotate(0deg);
     }
     100% {
-        bottom: 900px;
+        top: -500px;
         transform: rotate(0deg);
     }
 }
@@ -578,10 +582,10 @@
 
 #next-sentence-3:checked ~ .button-4 {
     display: flex;
-    width: 100px;
-    height: 40px;
+    /* width: 100px;
+    height: 75px;
     left: 1140px;
-    top: 700px;;
+    top: 700px;; */
 }
 
 

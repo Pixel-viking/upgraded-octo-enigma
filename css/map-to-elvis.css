@@ -77,25 +77,20 @@ h1 {
 }
 
 #ufo-container {
-    /* Just needs to change the --ufo-width and the second variable will get the half
-        I did it this way or else the circle goes too far away from its position */
+    /* To make something orbit you put something(ufo) in a container(ufo-container) and move it to the left or something.
+        Then you make the container rotate */
+
+    /* Orbit and Ufo size */
     --orbit-size: 100px;
-    --orbit-size-half: calc(var(--orbit-size)/2);
-
-    
-
-    /* Ufo size and scaling. The scale it gets to its target, might have to change it manually on the fly away animation */
     --ufo-size: 50px;
     
-    z-index: 1;
+    z-index: 2;
     position: absolute;
     width: var(--orbit-size);
     height: var(--orbit-size);
     top: -50px;
     left: -250px;
-    
-    border-radius: 50%;
-    transform: translateX(var(--orbit-size-half));
+    border-radius: 50%; /* Makes it a circle */
 
     /* Animation-timer and iterations needs to be synced between "ufo-orbit" and "ufo-counter-rotate" keyframes
        I added variables for easy editing so we don't have to do head math every time we change something */
@@ -103,8 +98,8 @@ h1 {
     --ufo-flies-in-duration: 2s;
 
     /* For the orbit animation */
-    --orbit-timer: 1.5s; /* Duration of each orbit */
-    --orbit-iterations: 4; /* Number of orbits */
+    --orbit-timer: 1.2s; /* Duration of each orbit */
+    --orbit-iterations: 3; /* Number of orbits */
     --orbit-delay: calc(var(--ufo-flies-in-duration) + var(--ufo-flies-in-delay)); /* Delay for starting the orbit */
 
     /* For the ufo flies away animation */
@@ -122,75 +117,75 @@ h1 {
     0% {  /* Start Position */
         top: -50px; 
         left: -250px;
-        transform: translateX(var(--orbit-size-half)) scale(1);
+        transform: scale(1);
     }
     20% {   /* To the hotel */
         top: 650px;
         left: 450px;
-        transform: translateX(var(--orbit-size-half)) scale(1.6);
+        transform: scale(1.6);
     }
     40% {   /* To the casino */
         top: 430px;
         left: 30px;
-        transform: translateX(var(--orbit-size-half)) scale(1.5);
+        transform: scale(1.5);
     }
     60% {   /* To the tesla shop */
         top: 250px;
         left: 450px;
-        transform: translateX(var(--orbit-size-half)) scale(1.2);
+        transform: scale(1.2);
     }
     80% {   /* To the pawn shop */
         top: 150px;
         left: 50px;
-        transform: translateX(var(--orbit-size-half)) scale(1.1);
+        transform: scale(1.1);
     }
     100% {  /* To the elvis chapel */
         top: 80px;
         left: 350px;
-        transform: translateX(var(--orbit-size-half)) scale(1.05);
+        transform: scale(1.05);
     }
 }
 
 /* This rotates the container */
 @keyframes ufo-orbit {
     0% {
-        transform: rotate(0deg) translateX(var(--orbit-size-half)) scale(1.05);
+        transform: rotate(0deg) scale(1.05);
     }
     100% {
-        transform: rotate(-360deg) translateX(var(--orbit-size-half)) scale(1.05);
+        transform: rotate(-360deg) scale(1.05);
     }
 }
 
 @keyframes ufo-flies-away {
-    0% {  /* To the elvis chapel */
+    0% {  /* From the elvis chapel */
         top: 80px;
         left: 350px;
-        transform: translateX(var(--orbit-size-half)) scale(1.05);
+        transform: scale(1.05);
     }
     20% {   /* To the pawn shop */
         top: 150px;
         left: 50px;
-        transform: translateX(var(--orbit-size-half)) scale(1.1);
+        transform: scale(1.1);
     }
     40% {   /* To the tesla shop */
         top: 250px;
         left: 450px;
-        transform: translateX(var(--orbit-size-half)) scale(1.2);
+        transform: scale(1.2);
     }
     60% {   /* To the casino */
         top: 430px;
         left: 30px;
-        transform: translateX(var(--orbit-size-half)) scale(1.5);
+        transform: scale(1.5);
     }
     80% {   /* To the hotel */
         top: 650px;
         left: 450px;
-        transform: translateX(var(--orbit-size-half)) scale(1.6);
+        transform: scale(1.6);
     }
-    100% {  /* Start Position */
+    100% {  /* Old Position */
         top: -50px; 
         left: -250px;
-        transform: translateX(var(--orbit-size-half)) scale(1);
+        transform: scale(1);
     }
 }
 
@@ -199,7 +194,7 @@ h1 {
     width: var(--ufo-size);
 
     top: 50%;
-    left: 50%;  
+    left: 80%;  
     /* transform: translate(-50%, -50%); */
     
     animation: ufo-counter-rotate var(--orbit-timer) linear var(--orbit-delay) var(--orbit-iterations);

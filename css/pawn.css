@@ -1,4 +1,3 @@
-
 #container {
     background-image: url(../images/pawnshop3correct.png);
     overflow: hidden;
@@ -336,37 +335,34 @@
 .chat-buttons {
     display: flex;
     position: absolute;
-
     justify-content: center;
     align-items: center;
     text-align: center;
     font-size: 0.7rem;
     cursor: pointer;
-    
     margin: 0%;
     padding: 0%;
-
     width: 100px;
     height: 50px;
     top: 700px;
     left: 1150px;
-    
+    border-radius: 5px;
     z-index: 5;
     opacity: 0;
-    
     background-color: rgba(230, 230, 230, 0.5);
-    border: solid rgba(200, 200, 200, 0.75) 2px;
+    border: solid rgba(240,240,240,1) 2px;
 }
 a, a:visited {
-    width: 100px;
-    height: 50px;
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 
-
-    /* border: 2px solid red; */
-    font-size: 1rem;
     color: inherit;
     text-decoration: none;
 }
+
 #checkbox-leaves {
     left: 1150px;
     top: 700px; 
@@ -443,3 +439,7 @@ a, a:visited {
     display: none;
 }
 
+#cash-container {
+    left: 20px;
+    top: 670px;
+}

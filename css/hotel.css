@@ -15,9 +15,7 @@ background-image: url(../images/resepsjonsbilde.png); }
     animation-delay: 7s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
-
 }
-
 
 /*animation keys*/
 @keyframes nokler {
@@ -70,15 +68,18 @@ background-image: url(../images/resepsjonsbilde.png); }
 }
 /* the typing animation*/
 @keyframes cursor {
-    50% {  border-color: transparent;}
+    50% {
+        border-color: transparent;
+    }
 }
 @keyframes typing {
-    from {width: 0;}
+    0% {
+        width: 0;
+    }   
 }
 
 /* The hand animation and the hand placement*/
 .hand {
-    
     padding-left: 680px;
     padding-top: 800px;
     transition: transform 1s ease;
@@ -106,8 +107,12 @@ background-image: url(../images/resepsjonsbilde.png); }
 }
 /* Button outlay */
 .button {
-    background-color: rgba(230, 230, 230, 1);
-    color: white;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(230, 230, 230, 0.7);
+    color: rgba(0,0,0,1);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -116,7 +121,12 @@ background-image: url(../images/resepsjonsbilde.png); }
     opacity: 0;
     visibility: hidden;
     animation: button 1s linear 10s forwards;
-    
+    width: 400px;
+    height: 30px;
+}
+
+a, a:visited {
+    text-decoration: none;
 }
 /* Button hidden to visible*/
 @keyframes button {

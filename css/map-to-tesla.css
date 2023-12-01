@@ -74,25 +74,20 @@ h1 {
 }
 
 #ufo-container {
-    /* Just needs to change the --ufo-width and the second variable will get the half
-        I did it this way or else the circle goes too far away from its position */
+    /* To make something orbit you put something(ufo) in a container(ufo-container) and move it to the left or something.
+        Then you make the container rotate */
+
+    /* Orbit and Ufo size */
     --orbit-size: 100px;
-    --orbit-size-half: calc(var(--orbit-size)/2);
-
-    
-
-    /* Ufo size and scaling. The scale it gets to its target, might have to change it manually on the fly away animation */
     --ufo-size: 50px;
     
-    z-index: 1;
+    z-index: 2;
     position: absolute;
     width: var(--orbit-size);
     height: var(--orbit-size);
     top: -50px;
     left: -250px;
-    
-    border-radius: 50%;
-    transform: translateX(var(--orbit-size-half));
+    border-radius: 50%; /* Makes it a circle */
 
     /* Animation-timer and iterations needs to be synced between "ufo-orbit" and "ufo-counter-rotate" keyframes
        I added variables for easy editing so we don't have to do head math every time we change something */
@@ -118,12 +113,12 @@ h1 {
 @keyframes ufo-flies-in {
     0% {
         top: 700px;
-        transform: translateX(var(--orbit-size-half)) scale(1.8);
+        transform: scale(1.8);
     }
     100% {
         top: 220px;
         left: 540px;
-        transform: translateX(var(--orbit-size-half)) scale(1.2);
+        transform: scale(1.2);
     }
 }
 
@@ -131,10 +126,10 @@ h1 {
 /* This rotates the container */
 @keyframes ufo-orbit {
     0% {
-        transform: rotate(0deg) translateX(var(--orbit-size-half)) scale(1.2);
+        transform: rotate(0deg) scale(1.2);
     }
     100% {
-        transform: rotate(-360deg) translateX(var(--orbit-size-half)) scale(1.2);
+        transform: rotate(-360deg) scale(1.2);
     }
 }
 
@@ -142,42 +137,42 @@ h1 {
     0% {  /* From Tesla shop */
         top: 220px;
         left: 540px;
-        transform: translateX(var(--orbit-size-half)) scale(1.2);
+        transform: scale(1.2);
     }
     10% {   /* Speeding into the Las Vegas sign */
         top: 130px;
         left: 820px;
-        transform: translateX(var(--orbit-size-half)) scale(1.1) rotate(-10);
+        transform: scale(1.1) rotate(-10);
         z-index: 3;
     }
     15% {
         top: 120px;
         left: 830px;
-        transform: translateX(var(--orbit-size-half)) scale(1.1) rotate(-20deg);
+        transform: scale(1.1) rotate(-20deg);
         z-index: 3;
     }
     20% {
         top: 130px;
         left: 820px;
-        transform: translateX(var(--orbit-size-half)) scale(1.1) rotate(5deg);
+        transform: scale(1.1) rotate(5deg);
         z-index: 3;
     }
     40% {   /* Flies back a bit*/
         top: 250px;
         left: 300px;
-        transform: translateX(var(--orbit-size-half)) scale(1.2);
+        transform: scale(1.2);
         z-index: 1;
     }
     60% {   /* Pauses a little */
         top: 230px;
         left: 290px;
-        transform: translateX(var(--orbit-size-half)) scale(1.2) rotate(10deg);
+        transform: scale(1.2) rotate(10deg);
         z-index: 1;
     }
     100% { /* Hides under the storyboard */
         top: 360px; 
         left: 820px;
-        transform: translateX(var(--orbit-size-half)) scale(1.3);
+        transform: scale(1.3);
         z-index: 1;
 
     }
@@ -198,13 +193,19 @@ h1 {
     width: var(--ufo-size);
 
     top: 50%;
-    left: 50%;  
+    left: 80%;  
     /* transform: translate(-50%, -50%); */
     
     /* animation: ufo-counter-rotate var(--orbit-timer) linear 2.7s var(--orbit-iterations); */
 }
 
-/* COUNTER ROTATION DISABLED IN TESLA SO IT LOOKS LIKE THE UFO IS JOYRIDING WITH LOOPS AND NOT JUST HOOVERING */
+
+
+
+/* COUNTER ROTATION DISABLED IN TESLA, SO IT LOOKS LIKE THE UFO IS JOYRIDING WITH LOOPS AND NOT JUST HOOVERING */
+
+
+
 
 /* This adds counter rotation to the ufo so it doesn't go upside down */
 /* @keyframes ufo-counter-rotate {

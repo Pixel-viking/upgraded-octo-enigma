@@ -4,9 +4,19 @@
   }
 
   /*posistion for weclcome sign*/
-.welcome {
+#welcome {
    position: absolute;
-   
+   left: 470px;
+   top: 200px;
+   opacity: 0;
+
+   animation: welcome-fade-in 3s ease-in forwards;
+
+}
+@keyframes welcome-fade-in {
+   100% {
+      opacity: 1;
+   }
 }
   
   /*This is the flight class it desides how big and where theh plane is loctatet on the site an it has the animations that plane will do */
@@ -71,7 +81,7 @@
     position: relative;
     opacity: 0.9;
     z-index: 1;
-    animation: cloud-move-left2 4s linear 0s 1 forwards;
+    animation: cloud-move-left2 4s linear 0s infinite forwards;
   }
   
   /* This is the keyframe for the cloudmove-left animation*/
@@ -94,7 +104,7 @@
     position: relative;
     opacity: 0.9;
     z-index: 1;
-    animation: cloud-move-left1 3s linear 0s 1 forwards;
+    animation: cloud-move-left1 3s linear 0s infinite forwards;
   }
   /* styling and animation ofr cloud 3 */
   .cloud3 {
@@ -104,7 +114,7 @@
    position: relative;
    opacity: 0.9;
    z-index: 1;
-   animation: cloud-move-left2 4s linear 0s 1 forwards; 
+   animation: cloud-move-left2 4s linear 0s infinite forwards; 
   }
   
   /* keyframes for cloud to move left1 animation and out off the map */
